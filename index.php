@@ -8,6 +8,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
  
+
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$mensagem = $_POST['mensagem'];
+
+
 $mail = new PHPMailer(true);
  
 try {
@@ -15,17 +21,17 @@ try {
 	$mail->isSMTP();
 	$mail->Host = 'smtp.gmail.com';
 	$mail->SMTPAuth = true;
-	$mail->Username = 'seuemail@gmail.com'; //login com e-mail de origem
-	$mail->Password = '123'; //senha e-mail de origem
+	$mail->Username = 'zzzzz@zzzz.com.br'; //login com e-mail de origem
+	$mail->Password = 'zzzzzz'; //senha e-mail de origem
 	$mail->Port = 587;
  
-	$mail->setFrom('seuemail@gmail.com'); //Origem. Aparece no e-mail como "de".
-	$mail->addAddress('seuemail@gmail.com'); //Destino, quem vai receber o e-mail.
-	$mail->addAddress('seuemail@gmail.com');
+	$mail->setFrom('zzz@xxxxx.com.br'); //Origem. Aparece no e-mail como "de".
+	$mail->addAddress('aaaaa@aaaa.com.br'); //Destino, quem vai receber o e-mail.
+	
  
 	$mail->isHTML(true);
 	$mail->Subject = 'Teste de email via gmail'; //Assunto do e-mail
-	$mail->Body = 'Chegou o email teste do <strong>Canal TI</strong>'; //Texto do e-mail
+	$mail->Body = ("Olá Dr, <br><br>Acabamos de reeber mais uma mensagem de: <br><br>Nome: $nome<br>Email: $email <br>Mensagem: $mensagem"); //Texto do e-mail
 	$mail->AltBody = 'Chegou o email teste ';
  
 	if($mail->send()) {
